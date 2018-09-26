@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/paper.min.css">
+  <style>.leaflet-tile { border: 0px; border-radius: 0; }</style><link type="application/atom+xml" rel="alternate" href="https://haslinger.github.io/tracker/feed.xml" title="1 Schweinehund" /></head>
+<body class="margin"><nav class="border shadow"><div class="nav-brand">
+    <h4><a href="/">1 Schweinehund</a></h4>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible2" type="checkbox" name="collapsible2">
+    <button>
+      <label for="collapsible2">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline"><li><a href="/about/">Über</a></li></ul>
+    </div>
+  </div>
+</nav>
+<main class="row" aria-label="Content">
+      <div class="col-12 col">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Aktivität am 28.07.2018 um  9:49</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-07-28T09:49:53+02:00" itemprop="datePublished">Jul 28, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Any comments on the run follow here.</p>
+
+
+<br/><br/>
+
+<link rel="stylesheet" type="text/css" href="/css/leaflet.css"/>
+<link rel="stylesheet" type="text/css" href="/css/taucharts.min.css">
+
+<script type="text/javascript" src="/js/leaflet.js"> </script>
+<script type="text/javascript" src="/js/tile.stamen.js"> </script>
+<script type="text/javascript" src="/js/d3.min.js"></script>
+<script type="text/javascript" src="/js/taucharts.min.js"></script>
+
+<div id="mapid" class="border shadow margin-large" style="height: 600px;"></div>
+
+<script>
+  var layer = new L.StamenTileLayer("watercolor");
+  var map = new L.Map("mapid", {
+        center: new L.LatLng(48.24666942469776, 16.52412355877459),
+        zoom: 12
+      });
+  map.addLayer(layer);
+
+  var path = L.polyline([
+    [48.24666942469776, 16.52412355877459],
+    [48.24666330590844, 16.52412749826908],
+    [48.24666045606136, 16.52414107695222],
+    [48.24665433727205, 16.524200839921832],
+    [48.24664805084467, 16.524285580962896],
+    [48.246652660891414, 16.524293376132846],
+    [48.24665039777756, 16.524301674216986],
+    [48.24664846993983, 16.524310475215316],
+    [48.2466724421829, 16.524382308125496],
+    [48.246691301465034, 16.5244045201689],
+    [48.2466999348253, 16.52442061342299],
+    [48.24673782102764, 16.52446118183434],
+    [48.24674880132079, 16.524502923712134],
+    [48.246786100789905, 16.524567296728492],
+    [48.24681577272713, 16.524656815454364],
+    [48.24681535363197, 16.52467232197523],
+    [48.2466724421829, 16.52479922398925],
+    [48.24663891457021, 16.52480618096888],
+    [48.246619468554854, 16.524370154365897],
+    [48.24667881242931, 16.524030603468418],
+    ], {color: 'blue', weight: 3, opacity: 0.5, smoothFactor: 1});
+  path.addTo(map);
+</script>
+
+<br/><br/>
+
+<div id='chart1' style="height: 300px;"></div>
+<div id='chart2' style="height: 300px;"></div>
+<div id='chart3' style="height: 300px;"></div>
+<div id='chart4' style="height: 300px;"></div>
+
+<script>
+var data = [
+  { distance: 0,
+      altitude: 144.8,
+      speed: 0.0,
+      heart_rate: 91,
+      cadence: 0,
+      time: 0 },
+  { distance: 1,
+      altitude: 144.8,
+      speed: 0.0,
+      heart_rate: 91,
+      cadence: 120,
+      time: 1 },
+  { distance: 2,
+      altitude: 144.8,
+      speed: 0.0,
+      heart_rate: 87,
+      cadence: 120,
+      time: 5 },
+  { distance: 6,
+      altitude: 144.8,
+      speed: 1.8,
+      heart_rate: 84,
+      cadence: 0,
+      time: 13 },
+  { distance: 13,
+      altitude: 144.6,
+      speed: 0.0,
+      heart_rate: 79,
+      cadence: 0,
+      time: 28 },
+  { distance: 13,
+      altitude: 144.6,
+      speed: 0.0,
+      heart_rate: 76,
+      cadence: 0,
+      time: 29 },
+  { distance: 14,
+      altitude: 144.6,
+      speed: 0.0,
+      heart_rate: 76,
+      cadence: 0,
+      time: 30 },
+  { distance: 15,
+      altitude: 144.4,
+      speed: 1.6,
+      heart_rate: 73,
+      cadence: 0,
+      time: 32 },
+  { distance: 20,
+      altitude: 144.4,
+      speed: 2.1,
+      heart_rate: 70,
+      cadence: 0,
+      time: 38 },
+  { distance: 23,
+      altitude: 144.4,
+      speed: 2.1,
+      heart_rate: 73,
+      cadence: 0,
+      time: 42 },
+  { distance: 24,
+      altitude: 144.2,
+      speed: 2.3,
+      heart_rate: 76,
+      cadence: 0,
+      time: 44 },
+  { distance: 29,
+      altitude: 144.2,
+      speed: 2.3,
+      heart_rate: 79,
+      cadence: 0,
+      time: 52 },
+  { distance: 32,
+      altitude: 144.2,
+      speed: 2.5,
+      heart_rate: 82,
+      cadence: 120,
+      time: 56 },
+  { distance: 39,
+      altitude: 144.0,
+      speed: 2.7,
+      heart_rate: 85,
+      cadence: 0,
+      time: 64 },
+  { distance: 46,
+      altitude: 144.0,
+      speed: 2.6,
+      heart_rate: 101,
+      cadence: 0,
+      time: 75 },
+  { distance: 47,
+      altitude: 144.0,
+      speed: 2.6,
+      heart_rate: 104,
+      cadence: 0,
+      time: 77 },
+  { distance: 65,
+      altitude: 144.0,
+      speed: 0.0,
+      heart_rate: 101,
+      cadence: 120,
+      time: 103 },
+  { distance: 68,
+      altitude: 144.2,
+      speed: 0.0,
+      heart_rate: 98,
+      cadence: 120,
+      time: 113 },
+  { distance: 105,
+      altitude: 144.2,
+      speed: 3.6,
+      heart_rate: 97,
+      cadence: 0,
+      time: 159 },
+  { distance: 133,
+      altitude: 145.4,
+      speed: 2.4,
+      heart_rate: 99,
+      cadence: 0,
+      time: 193 },
+  ]
+
+function tooltip() { return [
+  new Taucharts.api.plugins.get('tooltip')(
+    { fields: ['distance', 'altitude', 'speed', 'heart_rate', 'cadence', 'time'],
+      formatters: {
+        distance:   { format: function (n) { return (n + " m") } },
+        altitude:   { format: function (n) { return (n + " m") } },
+        speed:      { format: function (n) { return (n + " km/h") } },
+        heart_rate: { format: function (n) { return (n + "/min") } },
+        cadence:    { format: function (n) { return (n + "/min") } },
+        time:       { format: function (n) { return (n + " s") } }
+      }
+    }
+  )
+]}
+
+new Taucharts.Chart(
+  { data: data,
+    type: 'line',
+    x: 'distance',
+    y: 'altitude',
+    guide: {color: {brewer: ['#AEEC97']}},
+    plugins: tooltip() }
+).renderTo('#chart1')
+
+
+new Taucharts.Chart(
+  { data: data,
+    type: 'line',
+    x: 'distance',
+    y: 'speed',
+    guide: {color: {brewer: ['#EF893E']}},
+    plugins: tooltip() }
+).renderTo('#chart2')
+
+new Taucharts.Chart(
+  { data: data,
+    type: 'line',
+    x: 'distance',
+    y: 'heart_rate',
+    guide: {color: {brewer: ['#7DD6E6']}},
+    plugins: tooltip() }
+).renderTo('#chart3')
+
+new Taucharts.Chart(
+  { data: data,
+    type: 'line',
+    x: 'distance',
+    y: 'cadence',
+    guide: {color: {brewer: ['#F0BB21']}},
+    plugins: tooltip() }
+  ).renderTo('#chart4')
+</script>
+  </div>
+
+  <a class="u-url" href="/2018/07/28/09-49.html" hidden></a>
+</article>
+
+      </div>
+    </main><div class="row text-muted">
+  <div class="col-4 col">
+    <h4 class="footer-heading">1 Schweinehund</h4>
+  </div>
+
+  <div class="col-4 col">
+    <ul class="contact-list">
+      <li class="p-name">1 Schweinehund</li><li><a class="u-email" href="mailto:stefan@3-schweinehun.de">stefan@3-schweinehun.de</a></li></ul>
+  </div>
+
+  <div class="col-4 col">
+    <p>Mein Lauflog, erstellt mit Jekyll, Open Streetmap, Leaflet, Stamen Maptiles, D3.js und Taucharts.
+Die Daten stammen von einer Garmin Forerunner 235 und wurden mit ruby-fitparser nach yaml und von Jekyll weiter nach Json konvertiert.
+Alles in Allem nur freie Software und damit eine recht hübsche Alternative zu den kommerziellen Plattformen.</p>
+  </div>
+</div>
+</body>
+</html>

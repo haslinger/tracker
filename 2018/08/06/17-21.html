@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/paper.min.css">
+  <style>.leaflet-tile { border: 0px; border-radius: 0; }</style><link type="application/atom+xml" rel="alternate" href="https://haslinger.github.io/tracker/feed.xml" title="1 Schweinehund" /></head>
+<body class="margin"><nav class="border shadow"><div class="nav-brand">
+    <h4><a href="/">1 Schweinehund</a></h4>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible2" type="checkbox" name="collapsible2">
+    <button>
+      <label for="collapsible2">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline"><li><a href="/about/">Über</a></li></ul>
+    </div>
+  </div>
+</nav>
+<main class="row" aria-label="Content">
+      <div class="col-12 col">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Aktivität am 06.08.2018 um 17:21</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-08-06T17:21:33+02:00" itemprop="datePublished">Aug 6, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Any comments on the run follow here.</p>
+
+
+<br/><br/>
+
+<link rel="stylesheet" type="text/css" href="/css/leaflet.css"/>
+<link rel="stylesheet" type="text/css" href="/css/taucharts.min.css">
+
+<script type="text/javascript" src="/js/leaflet.js"> </script>
+<script type="text/javascript" src="/js/tile.stamen.js"> </script>
+<script type="text/javascript" src="/js/d3.min.js"></script>
+<script type="text/javascript" src="/js/taucharts.min.js"></script>
+
+<div id="mapid" class="border shadow margin-large" style="height: 600px;"></div>
+
+<script>
+  var layer = new L.StamenTileLayer("watercolor");
+  var map = new L.Map("mapid", {
+        center: new L.LatLng(48.24668124318123, 16.524086762219667),
+        zoom: 12
+      });
+  map.addLayer(layer);
+
+  var path = L.polyline([
+    [48.24668124318123, 16.524086762219667],
+    [48.246682500466704, 16.524092545732856],
+    [48.246632209047675, 16.524243419989944],
+    [48.24661787599325, 16.524311313405633],
+    [48.2466169539839, 16.52432036586106],
+    [48.24659742414951, 16.524331597611308],
+    [48.24662642553449, 16.524358838796616],
+    [48.24662810191512, 16.524393372237682],
+    [48.246630700305104, 16.52445430867374],
+    [48.24633934535086, 16.524619180709124],
+    [48.24593374505639, 16.52478849515319],
+    [48.246096186339855, 16.525455694645643],
+    [48.246114291250706, 16.525463573634624],
+    [48.24610800482333, 16.52531672269106],
+    [48.246205570176244, 16.526004876941442],
+    [48.246346386149526, 16.526405531913042],
+    [48.24649382382631, 16.52677919715643],
+    [48.24676581658423, 16.527006346732378],
+    [48.24709748849273, 16.527130901813507],
+    [48.24731131084263, 16.527212793007493],
+    [48.24756779707968, 16.527112629264593],
+    [48.24763837270439, 16.527300383895636],
+    [48.24866062961519, 16.527693830430508],
+    [48.24869583360851, 16.52788502164185],
+    [48.24865861795843, 16.52784587815404],
+    [48.24867789633572, 16.52788996696472],
+    [48.248682422563434, 16.527914106845856],
+    [48.24781347066164, 16.527827521786094],
+    [48.24759503826499, 16.527694752439857],
+    [48.24719438329339, 16.5278840996325],
+    [48.247205866500735, 16.52756307274103],
+    [48.24708290398121, 16.527710761874914],
+    [48.246579905971885, 16.52697365731001],
+    [48.246180256828666, 16.526553807780147],
+    [48.246092749759555, 16.526460852473974],
+    [48.245862163603306, 16.525492910295725],
+    [48.24580726213753, 16.5253231767565],
+    [48.245725370943546, 16.524953115731478],
+    [48.246711418032646, 16.524171084165573],
+    ], {color: 'blue', weight: 3, opacity: 0.5, smoothFactor: 1});
+  path.addTo(map);
+</script>
+
+<br/><br/>
+
+<div id='chart1' style="height: 300px;"></div>
+<div id='chart2' style="height: 300px;"></div>
+<div id='chart3' style="height: 300px;"></div>
+<div id='chart4' style="height: 300px;"></div>
+
+<script>
+var data = [
+  { distance: 0,
+      altitude: 145.8,
+      speed: 0.0,
+      heart_rate: 84,
+      cadence: 0,
+      time: 0 },
+  { distance: 0,
+      altitude: 145.6,
+      speed: 0.0,
+      heart_rate: 84,
+      cadence: 0,
+      time: 1 },
+  { distance: 12,
+      altitude: 145.8,
+      speed: 1.9,
+      heart_rate: 79,
+      cadence: 0,
+      time: 25 },
+  { distance: 18,
+      altitude: 145.8,
+      speed: 2.3,
+      heart_rate: 82,
+      cadence: 0,
+      time: 33 },
+  { distance: 18,
+      altitude: 145.8,
+      speed: 2.3,
+      heart_rate: 85,
+      cadence: 0,
+      time: 34 },
+  { distance: 20,
+      altitude: 145.8,
+      speed: 2.3,
+      heart_rate: 90,
+      cadence: 0,
+      time: 38 },
+  { distance: 21,
+      altitude: 145.8,
+      speed: 2.3,
+      heart_rate: 94,
+      cadence: 0,
+      time: 41 },
+  { distance: 24,
+      altitude: 145.8,
+      speed: 2.4,
+      heart_rate: 97,
+      cadence: 0,
+      time: 46 },
+  { distance: 29,
+      altitude: 145.8,
+      speed: 1.8,
+      heart_rate: 100,
+      cadence: 0,
+      time: 60 },
+  { distance: 57,
+      altitude: 145.6,
+      speed: 3.3,
+      heart_rate: 100,
+      cadence: 0,
+      time: 91 },
+  { distance: 109,
+      altitude: 145.4,
+      speed: 2.8,
+      heart_rate: 102,
+      cadence: 0,
+      time: 164 },
+  { distance: 195,
+      altitude: 144.8,
+      speed: 3.3,
+      heart_rate: 100,
+      cadence: 0,
+      time: 292 },
+  { distance: 197,
+      altitude: 144.8,
+      speed: 3.4,
+      heart_rate: 100,
+      cadence: 0,
+      time: 293 },
+  { distance: 210,
+      altitude: 144.6,
+      speed: 0.0,
+      heart_rate: 103,
+      cadence: 0,
+      time: 324 },
+  { distance: 262,
+      altitude: 153.8,
+      speed: 2.5,
+      heart_rate: 101,
+      cadence: 0,
+      time: 406 },
+  { distance: 312,
+      altitude: 151.8,
+      speed: 3.0,
+      heart_rate: 100,
+      cadence: 0,
+      time: 473 },
+  { distance: 357,
+      altitude: 154.6,
+      speed: 0.0,
+      heart_rate: 103,
+      cadence: 0,
+      time: 557 },
+  { distance: 407,
+      altitude: 168.8,
+      speed: 0.0,
+      heart_rate: 103,
+      cadence: 120,
+      time: 666 },
+  { distance: 451,
+      altitude: 147.8,
+      speed: 0.0,
+      heart_rate: 100,
+      cadence: 0,
+      time: 748 },
+  { distance: 501,
+      altitude: 141.2,
+      speed: 0.0,
+      heart_rate: 100,
+      cadence: 0,
+      time: 835 },
+  { distance: 532,
+      altitude: 135.8,
+      speed: 1.9,
+      heart_rate: 103,
+      cadence: 120,
+      time: 869 },
+  { distance: 590,
+      altitude: 96.4,
+      speed: 0.0,
+      heart_rate: 102,
+      cadence: 120,
+      time: 994 },
+  { distance: 677,
+      altitude: 133.0,
+      speed: 9.0,
+      heart_rate: 101,
+      cadence: 0,
+      time: 1233 },
+  { distance: 700,
+      altitude: 139.4,
+      speed: 0.0,
+      heart_rate: 98,
+      cadence: 0,
+      time: 1273 },
+  { distance: 706,
+      altitude: 144.4,
+      speed: 0.0,
+      heart_rate: 95,
+      cadence: 0,
+      time: 1292 },
+  { distance: 707,
+      altitude: 146.8,
+      speed: 0.0,
+      heart_rate: 99,
+      cadence: 0,
+      time: 1301 },
+  { distance: 708,
+      altitude: 148.0,
+      speed: 0.0,
+      heart_rate: 102,
+      cadence: 120,
+      time: 1306 },
+  { distance: 828,
+      altitude: 139.8,
+      speed: 3.0,
+      heart_rate: 100,
+      cadence: 0,
+      time: 1484 },
+  { distance: 883,
+      altitude: 148.2,
+      speed: 0.0,
+      heart_rate: 106,
+      cadence: 0,
+      time: 1596 },
+  { distance: 935,
+      altitude: 128.4,
+      speed: 1.6,
+      heart_rate: 105,
+      cadence: 0,
+      time: 1663 },
+  { distance: 996,
+      altitude: 149.0,
+      speed: 2.6,
+      heart_rate: 106,
+      cadence: 0,
+      time: 1739 },
+  { distance: 1013,
+      altitude: 149.2,
+      speed: 3.4,
+      heart_rate: 105,
+      cadence: 120,
+      time: 1754 },
+  { distance: 1078,
+      altitude: 157.8,
+      speed: 0.0,
+      heart_rate: 104,
+      cadence: 0,
+      time: 1960 },
+  { distance: 1163,
+      altitude: 148.0,
+      speed: 0.0,
+      heart_rate: 102,
+      cadence: 0,
+      time: 2080 },
+  { distance: 1179,
+      altitude: 140.2,
+      speed: 0.0,
+      heart_rate: 105,
+      cadence: 0,
+      time: 2093 },
+  { distance: 1339,
+      altitude: 165.6,
+      speed: 2.3,
+      heart_rate: 107,
+      cadence: 0,
+      time: 2281 },
+  { distance: 1353,
+      altitude: 167.0,
+      speed: 1.8,
+      heart_rate: 104,
+      cadence: 120,
+      time: 2306 },
+  { distance: 1381,
+      altitude: 170.0,
+      speed: 2.9,
+      heart_rate: 107,
+      cadence: 0,
+      time: 2342 },
+  { distance: 1520,
+      altitude: 143.6,
+      speed: 8.5,
+      heart_rate: 108,
+      cadence: 0,
+      time: 2639 },
+  ]
+
+function tooltip() { return [
+  new Taucharts.api.plugins.get('tooltip')(
+    { fields: ['distance', 'altitude', 'speed', 'heart_rate', 'cadence', 'time'],
+      formatters: {
+        distance:   { format: function (n) { return (n + " m") } },
+        altitude:   { format: function (n) { return (n + " m") } },
+        speed:      { format: function (n) { return (n + " km/h") } },
+        heart_rate: { format: function (n) { return (n + "/min") } },
+        cadence:    { format: function (n) { return (n + "/min") } },
+        time:       { format: function (n) { return (n + " s") } }
+      }
+    }
+  )
+]}
+
+new Taucharts.Chart(
+  { data: data,
+    type: 'line',
+    x: 'distance',
+    y: 'altitude',
+    guide: {color: {brewer: ['#AEEC97']}},
+    plugins: tooltip() }
+).renderTo('#chart1')
+
+
+new Taucharts.Chart(
+  { data: data,
+    type: 'line',
+    x: 'distance',
+    y: 'speed',
+    guide: {color: {brewer: ['#EF893E']}},
+    plugins: tooltip() }
+).renderTo('#chart2')
+
+new Taucharts.Chart(
+  { data: data,
+    type: 'line',
+    x: 'distance',
+    y: 'heart_rate',
+    guide: {color: {brewer: ['#7DD6E6']}},
+    plugins: tooltip() }
+).renderTo('#chart3')
+
+new Taucharts.Chart(
+  { data: data,
+    type: 'line',
+    x: 'distance',
+    y: 'cadence',
+    guide: {color: {brewer: ['#F0BB21']}},
+    plugins: tooltip() }
+  ).renderTo('#chart4')
+</script>
+  </div>
+
+  <a class="u-url" href="/2018/08/06/17-21.html" hidden></a>
+</article>
+
+      </div>
+    </main><div class="row text-muted">
+  <div class="col-4 col">
+    <h4 class="footer-heading">1 Schweinehund</h4>
+  </div>
+
+  <div class="col-4 col">
+    <ul class="contact-list">
+      <li class="p-name">1 Schweinehund</li><li><a class="u-email" href="mailto:stefan@3-schweinehun.de">stefan@3-schweinehun.de</a></li></ul>
+  </div>
+
+  <div class="col-4 col">
+    <p>Mein Lauflog, erstellt mit Jekyll, Open Streetmap, Leaflet, Stamen Maptiles, D3.js und Taucharts.
+Die Daten stammen von einer Garmin Forerunner 235 und wurden mit ruby-fitparser nach yaml und von Jekyll weiter nach Json konvertiert.
+Alles in Allem nur freie Software und damit eine recht hübsche Alternative zu den kommerziellen Plattformen.</p>
+  </div>
+</div>
+</body>
+</html>
