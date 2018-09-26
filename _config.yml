@@ -23,8 +23,8 @@ description: >- # this means to ignore newlines until "baseurl:"
 
   Alles in Allem nur freie Software und damit eine recht hübsche Alternative zu den kommerziellen
   Plattformen.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/tracker"
+url: "https://haslinger.github.io"
 twitter_username: informatom
 github_username:  haslinger
 
