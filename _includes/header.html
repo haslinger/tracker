@@ -1,0 +1,30 @@
+<nav class="border shadow">
+  {%- assign default_paths = site.pages | map: "path" -%}
+  {%- assign page_paths = site.header_pages | default: default_paths -%}
+
+  <div class="nav-brand">
+    <h4><a href="{{ "/" | relative_url }}">{{ site.title | escape }}</a></h4>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible2" type="checkbox" name="collapsible2">
+    <button>
+      <label for="collapsible2">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        {%- if page_paths -%}
+          {%- for path in page_paths -%}
+            {%- assign my_page = site.pages | where: "path", path | first -%}
+            {%- if my_page.title -%}
+              <li><a href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a></li>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+    </div>
+  </div>
+</nav>

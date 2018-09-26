@@ -1,0 +1,105 @@
+---
+layout: post
+---
+
+{{ content }}
+
+<br/><br/>
+
+<link rel="stylesheet" type="text/css" href="/css/leaflet.css"/>
+<link rel="stylesheet" type="text/css" href="/css/taucharts.min.css">
+
+<script type="text/javascript" src="/js/leaflet.js"> </script>
+<script type="text/javascript" src="/js/tile.stamen.js"> </script>
+<script type="text/javascript" src="/js/d3.min.js"></script>
+<script type="text/javascript" src="/js/taucharts.min.js"></script>
+
+<div id="mapid" class="border shadow margin-large" style="height: 600px;"></div>
+
+<script>
+  var layer = new L.StamenTileLayer("watercolor");
+  var map = new L.Map("mapid", {
+        center: new L.LatLng({{ page.points.first.lat }}, {{ page.points.first.long }}),
+        zoom: 12
+      });
+  map.addLayer(layer);
+
+  var path = L.polyline([
+    {% for point in page.points -%}
+      [{{ point.lat }}, {{ point.long}}],
+    {% endfor -%}
+    ], {color: 'blue', weight: 3, opacity: 0.5, smoothFactor: 1});
+  path.addTo(map);
+</script>
+
+<br/><br/>
+
+<div id='chart1' style="height: 300px;"></div>
+<div id='chart2' style="height: 300px;"></div>
+<div id='chart3' style="height: 300px;"></div>
+<div id='chart4' style="height: 300px;"></div>
+
+<script>
+var data = [
+  {% for point in page.points -%}
+    { distance: {{ point.distance }},
+      altitude: {{ point.altitude }},
+      speed: {{ point.speed }},
+      heart_rate: {{ point.heart_rate }},
+      cadence: {{ point.cadence }},
+      time: {{ point.time }} },
+  {% endfor -%}
+]
+
+function tooltip() { return [
+  new Taucharts.api.plugins.get('tooltip')(
+    { fields: ['distance', 'altitude', 'speed', 'heart_rate', 'cadence', 'time'],
+      formatters: {
+        distance:   { format: function (n) { return (n + " m") } },
+        altitude:   { format: function (n) { return (n + " m") } },
+        speed:      { format: function (n) { return (n + " km/h") } },
+        heart_rate: { format: function (n) { return (n + "/min") } },
+        cadence:    { format: function (n) { return (n + "/min") } },
+        time:       { format: function (n) { return (n + " s") } }
+      }
+    }
+  )
+]}
+
+new Taucharts.Chart(
+  { data: data,
+    type: 'line',
+    x: 'distance',
+    y: 'altitude',
+    guide: {color: {brewer: ['#AEEC97']}},
+    plugins: tooltip() }
+).renderTo('#chart1')
+
+
+new Taucharts.Chart(
+  { data: data,
+    type: 'line',
+    x: 'distance',
+    y: 'speed',
+    guide: {color: {brewer: ['#EF893E']}},
+    plugins: tooltip() }
+).renderTo('#chart2')
+
+new Taucharts.Chart(
+  { data: data,
+    type: 'line',
+    x: 'distance',
+    y: 'heart_rate',
+    guide: {color: {brewer: ['#7DD6E6']}},
+    plugins: tooltip() }
+).renderTo('#chart3')
+
+new Taucharts.Chart(
+  { data: data,
+    type: 'line',
+    x: 'distance',
+    y: 'cadence',
+    guide: {color: {brewer: ['#F0BB21']}},
+    plugins: tooltip() }
+  ).renderTo('#chart4')
+</script>
