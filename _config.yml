@@ -42,3 +42,5 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - ACTIVITY
+  - activity-parser.rb
+  - _config.dev.yml
