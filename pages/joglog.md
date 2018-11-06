@@ -61,7 +61,7 @@ permalink: /joglog
 * ☑ [Sa 3.](2018/11/03/12-45.html) - 10 km GA1<br/>
   *Am Anfang gar keine Lust/Nebel, nach 3km gut im Rhythmus, neue Strecke nett, bis 8km lockerer geworden
   Dann wegen 0-er Tag Akku leer. Am Schluss linkes Knie recht verkrampft. Aber: flott erholt und
-  am Tag danach fast keinen Muskelkater.*</br>
+  am Tag danach fast keinen Muskelkater.*<br/>
   *Steigerung im Unfang in der nächsten Woche traue ich mir nicht zu, aber das Gleiche in smoother wäre fein.
   D.h. Intervalle konstanter, 10er am Sa ohne einzugehen.*
 * ☑ [So 4.](2018/11/04/15-31.html) - 17 km Rad<br/>
